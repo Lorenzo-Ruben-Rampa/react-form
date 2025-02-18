@@ -3,14 +3,14 @@ import { useState } from 'react'
 function App() {
 
   // Creo l'array di articoli
-  const articles = ["Le meraviglie del cosmo: esplorando l'universo", "Cucina italiana: ricette tradizionali rivisitate", "Tecnologia verde: il futuro sostenibile", "Arte contemporanea: tendenze e protagonisti", "Viaggi low-cost: destinazioni imperdibili"];
+  const initialArticles = ["Le meraviglie del cosmo: esplorando l'universo", "Cucina italiana: ricette tradizionali rivisitate", "Tecnologia verde: il futuro sostenibile", "Arte contemporanea: tendenze e protagonisti", "Viaggi low-cost: destinazioni imperdibili"];
 
-  const [article, setArticle] = useState(articles);
+  const [articles, setArticles] = useState(initialArticles);
   const [newArticle, setNewArticle] = useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
-    setNewArticle([...article, newArticle]);
+    setArticles([...articles, newArticle]);
     // azzero il valore di newArticle
     setNewArticle('');
   }
