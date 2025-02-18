@@ -1,33 +1,41 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  // Creo l'array di articoli
+  const articoli = [
+    {
+      titolo: "Le meraviglie del cosmo: esplorando l'universo",
+      occhiello: "Un viaggio attraverso le galassie e i misteri dello spazio profondo.",
+      categoria: "Scienza"
+    },
+    {
+      titolo: "Cucina italiana: ricette tradizionali rivisitate",
+      occhiello: "Scopri come innovare i piatti classici della tradizione culinaria italiana.",
+      categoria: "Cucina"
+    },
+    {
+      titolo: "Tecnologia verde: il futuro sostenibile",
+      occhiello: "Come le innovazioni tecnologiche stanno contribuendo a un pianeta più pulito.",
+      categoria: "Ambiente"
+    },
+    {
+      titolo: "Arte contemporanea: tendenze e protagonisti",
+      occhiello: "Un'analisi delle correnti artistiche moderne e dei loro principali esponenti.",
+      categoria: "Arte"
+    },
+    {
+      titolo: "Viaggi low-cost: destinazioni imperdibili",
+      occhiello: "Consigli e trucchi per viaggiare il mondo senza spendere una fortuna.",
+      categoria: "Viaggi"
+    }
+  ];
+
+  const [x, sety] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      < 
     </>
   )
 }
