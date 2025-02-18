@@ -7,6 +7,11 @@ function App() {
 
   const [newArticle, setNewArticle] = useState("Innovazione digitale: esempi e trend del futuro");
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log("Il nuovo articolo s'intitola: " + newArticle)
+  }
+
   return (
     <>
       <div className="container">
