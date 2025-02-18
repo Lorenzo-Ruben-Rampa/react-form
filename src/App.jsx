@@ -11,11 +11,13 @@ function App() {
     <>
       <div className="container">
         <ul>
-          {articoli.map((index, articolo) => (
+          {articoli.map((articolo, index) => (
             <li
               key={index}>{articolo}</li>
           ))}
         </ul>
+      </div>
+      <div className="container">
         <form action="/action_page.php" method="get">
           <label>First name:</label>
           <input type="text" id="fname" name="fname" placeholder="Inserire il nome qui"></input>
