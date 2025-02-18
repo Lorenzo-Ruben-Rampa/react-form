@@ -3,25 +3,25 @@ import { useState } from 'react'
 function App() {
 
   // Creo l'array di articoli
-  const articoli = ["Le meraviglie del cosmo: esplorando l'universo", "Cucina italiana: ricette tradizionali rivisitate", "Tecnologia verde: il futuro sostenibile", "Arte contemporanea: tendenze e protagonisti", "Viaggi low-cost: destinazioni imperdibili"];
+  const articoles = ["Le meraviglie del cosmo: esplorando l'universo", "Cucina italiana: ricette tradizionali rivisitate", "Tecnologia verde: il futuro sostenibile", "Arte contemporanea: tendenze e protagonisti", "Viaggi low-cost: destinazioni imperdibili"];
 
-  const [x, sety] = useState(0)
+  const [newArticle, setNewArticle] = useState("Innovazione digitale: esempi e trend del futuro");
 
   return (
     <>
       <div className="container">
         <ul>
-          {articoli.map((articolo, index) => (
+          {articoles.map((article, index) => (
             <li
-              key={index}>{articolo}</li>
+              key={index}>{article}</li>
           ))}
         </ul>
       </div>
       <div className="container">
-        <form action="/action_page.php" method="get">
-          <label>First name:</label>
-          <input type="text" id="fname" name="fname" placeholder="Inserire il nome qui"></input>
-          <input type="submit" value="Submit"></input>
+        <form onSubmit={handleSubmit} action="/action_page.php" method="get">
+          <label>Aggiungi Titolo:</label>
+          <input type="text" id="fname" name="fname" value={newArticle} onChange={e => { setNewArticle(e.target.value) }} placeholder="Inserire il nuovo titolo qui"></input>
+          <input type="submit" value="Aggiungi"></input>
         </form>
       </div>
     </>

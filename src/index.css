@@ -91,7 +91,18 @@ ul {
 
 ul>li {
   margin: 1em;
+  border: 1px solid black;
+  padding: 1em;
+  background-color: lightblue;
+  color: blue;
 }
+
+#fname {
+  width: 500px;
+  padding: 1em;
+  text-align: center;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
