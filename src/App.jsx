@@ -8,33 +8,39 @@ function App() {
   // BONUS Array di articoli aggiornato
   const initialArticlesArray = [
     {
+      id: Date.now,
       titolo: "Le meraviglie del cosmo: esplorando l'universo",
-      occhiello: "Un viaggio attraverso le galassie e i misteri dello spazio profondo.",
+      contenuto: "Un viaggio attraverso le galassie e i misteri dello spazio profondo.",
       categoria: "Scienza"
     },
     {
+      id: Date.now,
       titolo: "Cucina italiana: ricette tradizionali rivisitate",
-      occhiello: "Scopri come innovare i piatti classici della tradizione culinaria italiana.",
+      contenuto: "Scopri come innovare i piatti classici della tradizione culinaria italiana.",
       categoria: "Cucina"
     },
     {
+      id: Date.now,
       titolo: "Tecnologia verde: il futuro sostenibile",
-      occhiello: "Come le innovazioni tecnologiche stanno contribuendo a un pianeta più pulito.",
+      contenuto: "Come le innovazioni tecnologiche stanno contribuendo a un pianeta più pulito.",
       categoria: "Ambiente"
     },
     {
+      id: Date.now,
       titolo: "Arte contemporanea: tendenze e protagonisti",
-      occhiello: "Un'analisi delle correnti artistiche moderne e dei loro principali esponenti.",
+      contenuto: "Un'analisi delle correnti artistiche moderne e dei loro principali esponenti.",
       categoria: "Arte"
     },
     {
+      id: Date.now,
       titolo: "Viaggi low-cost: destinazioni imperdibili",
-      occhiello: "Consigli e trucchi per viaggiare il mondo senza spendere una fortuna.",
+      contenuto: "Consigli e trucchi per viaggiare il mondo senza spendere una fortuna.",
       categoria: "Viaggi"
     },
     {
+      id: Date.now,
       titolo: "Innovazione digitale: esempi e trend del futuro",
-      occhiello: "Esploriamo come la trasformazione digitale sta cambiando le nostre vite e quali sono le prospettive future.",
+      contenuto: "Esploriamo come la trasformazione digitale sta cambiando le nostre vite e quali sono le prospettive future.",
       categoria: "Tecnologia"
     }
   ];
@@ -42,7 +48,7 @@ function App() {
   //  Nuovo articolo da aggiungere
   // {
   //   titolo: "Innovazione digitale: esempi e trend del futuro",
-  //   occhiello: "Esploriamo come la trasformazione digitale sta cambiando le nostre vite e quali sono le prospettive future.",
+  //   contenuto: "Esploriamo come la trasformazione digitale sta cambiando le nostre vite e quali sono le prospettive future.",
   //   categoria: "Tecnologia"
   // }
 
@@ -52,7 +58,7 @@ function App() {
   // Modifico in modo che l'array tratti oggetti, non più stringhe
   const [newArticle, setNewArticle] = useState({
     titolo: '',
-    occhiello: '',
+    contenuto: '',
     categoria: ''
   });
 
@@ -76,9 +82,9 @@ function App() {
   // Modifica al gestore per l'aggiunta di un nuovo articolo
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (newArticle.titolo && newArticle.occhiello && newArticle.categoria) {
+    if (newArticle.titolo && newArticle.contenuto && newArticle.categoria) {
       setArticles((prevArticles) => [...prevArticles, newArticle]);
-      setNewArticle({ titolo: '', occhiello: '', categoria: '' });
+      setNewArticle({ titolo: '', contenuto: '', categoria: '' });
     } else {
       alert('Per favore, compila tutti i campi.');
     }
@@ -91,7 +97,7 @@ function App() {
           {articles.map((article, index) => (
             <li
               key={index}><h2>{article.titolo}</h2>
-              <p>{article.occhiello}</p>
+              <p>{article.contenuto}</p>
               <p><em>{article.categoria}</em></p>
             </li>
           ))}
@@ -104,7 +110,7 @@ function App() {
           <input type="submit" value="Aggiungi"></input> */}
           {/* Modifica agli input per il passaggio ad array di oggetti */}
           <label>
-            Titolo:
+            <p className="label-sm">Titolo:</p>
             <input
               type="text"
               name="titolo"
@@ -113,20 +119,18 @@ function App() {
               placeholder="Inserisci il titolo"
             />
           </label>
-          <br />
           <label>
-            Occhiello:
+            <p className="label-sm">Contenuto:</p>
             <input
               type="text"
-              name="occhiello"
-              value={newArticle.occhiello}
+              name="contenuto"
+              value={newArticle.contenuto}
               onChange={handleInputChange}
-              placeholder="Inserisci l'occhiello"
+              placeholder="Inserisci l'contenuto"
             />
           </label>
-          <br />
           <label>
-            Categoria:
+            <p className="label-sm">Categoria:</p>
             <input
               type="text"
               name="categoria"
@@ -135,8 +139,7 @@ function App() {
               placeholder="Inserisci la categoria"
             />
           </label>
-          <br />
-          <input type="submit" value="Aggiungi Articolo" />
+          <span><input className="submit-bt" type="submit" value="Aggiungi Articolo" /></span>
         </form>
       </div>
     </>

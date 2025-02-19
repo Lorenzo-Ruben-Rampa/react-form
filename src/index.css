@@ -31,7 +31,7 @@ a:hover {
 }
 
 body {
-  margin-top: 15%;
+  margin-top: 30px;
   min-width: 320px;
   min-height: 100vh;
   display: flex;
@@ -79,7 +79,8 @@ button:focus-visible {
 }
 
 input {
-  margin: 2em;
+  margin-right: 1em;
+  margin-top: 1em;
 }
 
 ul {
@@ -103,6 +104,31 @@ ul>li {
   text-align: center;
 }
 
+label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.label-sm {
+  width: 80px;
+  margin-bottom: 0;
+}
+
+form {
+  width: 700px;
+  display: flex;
+  margin-top: 50px;
+}
+
+.submit-bt {
+  padding: 1em;
+  position: relative;
+  top: -10px;
+  margin-left: 50px;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
