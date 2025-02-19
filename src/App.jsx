@@ -56,14 +56,33 @@ function App() {
     categoria: ''
   });
 
+  // Gestore per l'aggiornamento del nuovo articolo
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setNewArticle((prevArticle) => ({
+      ...prevArticle,
+      [name]: value
+    }));
+  };
 
+  // Gestore per l'aggiunta di un nuovo articolo  
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   setArticles([...articles, newArticle]);
+  //   // azzero il valore di newArticle
+  //   setNewArticle('');
+  // }
 
-  const handleSubmit = event => {
+  // Modifica al gestore per l'aggiunta di un nuovo articolo
+  const handleSubmit = (event) => {
     event.preventDefault();
-    setArticles([...articles, newArticle]);
-    // azzero il valore di newArticle
-    setNewArticle('');
-  }
+    if (newArticle.titolo && newArticle.occhiello && newArticle.categoria) {
+      setArticles((prevArticles) => [...prevArticles, newArticle]);
+      setNewArticle({ titolo: '', occhiello: '', categoria: '' });
+    } else {
+      alert('Per favore, compila tutti i campi.');
+    }
+  };
 
   return (
     <>
@@ -71,15 +90,53 @@ function App() {
         <ul>
           {articles.map((article, index) => (
             <li
-              key={index}>{article.titolo}</li>
+              key={index}><h2>{article.titolo}</h2>
+              <p>{article.occhiello}</p>
+              <p><em>{article.categoria}</em></p>
+            </li>
           ))}
         </ul>
       </div>
       <div className="container">
         <form onSubmit={handleSubmit} action="/action_page.php" method="get">
-          <label>Aggiungi Titolo:</label>
-          <input type="text" id="fname" name="fname" value={newArticle} onChange={event => { setNewArticle(event.target.value) }} placeholder="Inserire il nuovo titolo qui"></input>
-          <input type="submit" value="Aggiungi"></input>
+          {/* <label>Aggiungi Articolo:</label>
+          <input type="text" id="fname" name="fname" value={newArticle} onChange={event => { setNewArticle(event.target.value) }} placeholder="Inserire il nuovo articolo qui"></input>
+          <input type="submit" value="Aggiungi"></input> */}
+          {/* Modifica agli input per il passaggio ad array di oggetti */}
+          <label>
+            Titolo:
+            <input
+              type="text"
+              name="titolo"
+              value={newArticle.titolo}
+              onChange={handleInputChange}
+              placeholder="Inserisci il titolo"
+            />
+          </label>
+          <br />
+          <label>
+            Occhiello:
+            <input
+              type="text"
+              name="occhiello"
+              value={newArticle.occhiello}
+              onChange={handleInputChange}
+              placeholder="Inserisci l'occhiello"
+            />
+          </label>
+          <br />
+          <label>
+            Categoria:
+            <input
+              type="text"
+              name="categoria"
+              value={newArticle.categoria}
+              onChange={handleInputChange}
+              placeholder="Inserisci la categoria"
+            />
+          </label>
+          <br />
+          <input type="submit" value="Aggiungi Articolo" />
         </form>
       </div>
     </>
