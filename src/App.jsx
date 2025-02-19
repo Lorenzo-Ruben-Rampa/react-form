@@ -3,41 +3,41 @@ import { useState } from 'react'
 function App() {
 
   // Creo l'array di articoli
-  const initialArticles = ["Le meraviglie del cosmo: esplorando l'universo", "Cucina italiana: ricette tradizionali rivisitate", "Tecnologia verde: il futuro sostenibile", "Arte contemporanea: tendenze e protagonisti", "Viaggi low-cost: destinazioni imperdibili"];
+  // const initialArticles = ["Le meraviglie del cosmo: esplorando l'universo", "Cucina italiana: ricette tradizionali rivisitate", "Tecnologia verde: il futuro sostenibile", "Arte contemporanea: tendenze e protagonisti", "Viaggi low-cost: destinazioni imperdibili"];
 
-  // BONUS
-  // const initialArticlesArray = [
-  //   {
-  //     titolo: "Le meraviglie del cosmo: esplorando l'universo",
-  //     occhiello: "Un viaggio attraverso le galassie e i misteri dello spazio profondo.",
-  //     categoria: "Scienza"
-  //   },
-  //   {
-  //     titolo: "Cucina italiana: ricette tradizionali rivisitate",
-  //     occhiello: "Scopri come innovare i piatti classici della tradizione culinaria italiana.",
-  //     categoria: "Cucina"
-  //   },
-  //   {
-  //     titolo: "Tecnologia verde: il futuro sostenibile",
-  //     occhiello: "Come le innovazioni tecnologiche stanno contribuendo a un pianeta più pulito.",
-  //     categoria: "Ambiente"
-  //   },
-  //   {
-  //     titolo: "Arte contemporanea: tendenze e protagonisti",
-  //     occhiello: "Un'analisi delle correnti artistiche moderne e dei loro principali esponenti.",
-  //     categoria: "Arte"
-  //   },
-  //   {
-  //     titolo: "Viaggi low-cost: destinazioni imperdibili",
-  //     occhiello: "Consigli e trucchi per viaggiare il mondo senza spendere una fortuna.",
-  //     categoria: "Viaggi"
-  //   },
-  //   {
-  //     titolo: "Innovazione digitale: esempi e trend del futuro",
-  //     occhiello: "Esploriamo come la trasformazione digitale sta cambiando le nostre vite e quali sono le prospettive future.",
-  //     categoria: "Tecnologia"
-  //   }
-  // ];
+  // BONUS Array di articoli aggiornato
+  const initialArticlesArray = [
+    {
+      titolo: "Le meraviglie del cosmo: esplorando l'universo",
+      occhiello: "Un viaggio attraverso le galassie e i misteri dello spazio profondo.",
+      categoria: "Scienza"
+    },
+    {
+      titolo: "Cucina italiana: ricette tradizionali rivisitate",
+      occhiello: "Scopri come innovare i piatti classici della tradizione culinaria italiana.",
+      categoria: "Cucina"
+    },
+    {
+      titolo: "Tecnologia verde: il futuro sostenibile",
+      occhiello: "Come le innovazioni tecnologiche stanno contribuendo a un pianeta più pulito.",
+      categoria: "Ambiente"
+    },
+    {
+      titolo: "Arte contemporanea: tendenze e protagonisti",
+      occhiello: "Un'analisi delle correnti artistiche moderne e dei loro principali esponenti.",
+      categoria: "Arte"
+    },
+    {
+      titolo: "Viaggi low-cost: destinazioni imperdibili",
+      occhiello: "Consigli e trucchi per viaggiare il mondo senza spendere una fortuna.",
+      categoria: "Viaggi"
+    },
+    {
+      titolo: "Innovazione digitale: esempi e trend del futuro",
+      occhiello: "Esploriamo come la trasformazione digitale sta cambiando le nostre vite e quali sono le prospettive future.",
+      categoria: "Tecnologia"
+    }
+  ];
 
   //  Nuovo articolo da aggiungere
   // {
@@ -46,8 +46,17 @@ function App() {
   //   categoria: "Tecnologia"
   // }
 
-  const [articles, setArticles] = useState(initialArticles);
-  const [newArticle, setNewArticle] = useState("");
+  // useState
+  const [articles, setArticles] = useState(initialArticlesArray);
+  // const [newArticle, setNewArticle] = useState("");
+  // Modifico in modo che l'array tratti oggetti, non più stringhe
+  const [newArticle, setNewArticle] = useState({
+    titolo: '',
+    occhiello: '',
+    categoria: ''
+  });
+
+
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -62,7 +71,7 @@ function App() {
         <ul>
           {articles.map((article, index) => (
             <li
-              key={index}>{article}</li>
+              key={index}>{article.titolo}</li>
           ))}
         </ul>
       </div>

@@ -7,4 +7,4 @@ Aggiungiamo in pagina un semplice form con un campo input in cui inserire il tit
 
 BONUS
 Aggiungere la possibilità di cancellare ciascun articolo utilizzando un’icona;
-passare da array di stringhe a array di oggetti post (ogni post ha id e title), cercando di gestirli per poi per id, invece di appoggiarsi all’index dell’elemento nell’array.
+passare da array di stringhe a array di oggetti post (ogni post ha id e title), cercando di gestirli per id, invece di appoggiarsi all’index dell’elemento nell’array.
