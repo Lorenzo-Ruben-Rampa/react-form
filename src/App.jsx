@@ -8,48 +8,35 @@ function App() {
   // BONUS Array di articoli aggiornato
   const initialArticlesArray = [
     {
-      id: Date.now,
+      id: 1,
       titolo: "Le meraviglie del cosmo: esplorando l'universo",
-      contenuto: "Un viaggio attraverso le galassie e i misteri dello spazio profondo.",
-      categoria: "Scienza"
     },
     {
-      id: Date.now,
+      id: 2,
       titolo: "Cucina italiana: ricette tradizionali rivisitate",
-      contenuto: "Scopri come innovare i piatti classici della tradizione culinaria italiana.",
-      categoria: "Cucina"
     },
     {
-      id: Date.now,
+      id: 3,
       titolo: "Tecnologia verde: il futuro sostenibile",
-      contenuto: "Come le innovazioni tecnologiche stanno contribuendo a un pianeta più pulito.",
-      categoria: "Ambiente"
     },
     {
-      id: Date.now,
+      id: 4,
       titolo: "Arte contemporanea: tendenze e protagonisti",
-      contenuto: "Un'analisi delle correnti artistiche moderne e dei loro principali esponenti.",
-      categoria: "Arte"
     },
     {
-      id: Date.now,
+      id: 5,
       titolo: "Viaggi low-cost: destinazioni imperdibili",
-      contenuto: "Consigli e trucchi per viaggiare il mondo senza spendere una fortuna.",
-      categoria: "Viaggi"
     },
     {
-      id: Date.now,
+      id: 6,
       titolo: "Innovazione digitale: esempi e trend del futuro",
-      contenuto: "Esploriamo come la trasformazione digitale sta cambiando le nostre vite e quali sono le prospettive future.",
-      categoria: "Tecnologia"
     }
   ];
 
   //  Nuovo articolo da aggiungere
   // {
-  //   titolo: "Innovazione digitale: esempi e trend del futuro",
-  //   contenuto: "Esploriamo come la trasformazione digitale sta cambiando le nostre vite e quali sono le prospettive future.",
-  //   categoria: "Tecnologia"
+  // id: 7,  
+  // titolo: "Innovazione digitale: esempi e trend del futuro",
   // }
 
   // useState
@@ -57,19 +44,9 @@ function App() {
   // const [newArticle, setNewArticle] = useState("");
   // Modifico in modo che l'array tratti oggetti, non più stringhe
   const [newArticle, setNewArticle] = useState({
+    id: Number,
     titolo: '',
-    contenuto: '',
-    categoria: ''
   });
-
-  // Gestore per l'aggiornamento del nuovo articolo
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setNewArticle((prevArticle) => ({
-      ...prevArticle,
-      [name]: value
-    }));
-  };
 
   // Gestore per l'aggiunta di un nuovo articolo  
   // const handleSubmit = event => {
@@ -79,15 +56,34 @@ function App() {
   //   setNewArticle('');
   // }
 
-  // Modifica al gestore per l'aggiunta di un nuovo articolo
+  // Modifica al gestore per l'aggiunta di un nuovo articolo in caso i campi non sono compilati
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (newArticle.titolo && newArticle.contenuto && newArticle.categoria) {
-      setArticles((prevArticles) => [...prevArticles, newArticle]);
-      setNewArticle({ titolo: '', contenuto: '', categoria: '' });
+    if (newArticle.titolo) {
+      const articleWithId = {
+        ...newArticle,
+        id: articles.length ? articles[articles.length - 1].id + 1 : 1
+      };
+      setArticles((prevArticles) => [...prevArticles, articleWithId]);
+      setNewArticle({ titolo: '' });
     } else {
       alert('Per favore, compila tutti i campi.');
     }
+  };
+
+  //Definisco la funzione per l'onChange
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setNewArticle((prevArticle) => ({
+      ...prevArticle,
+      [name]: value
+    }));
+  };
+
+  // //Rimuovere un articolo
+  const removeArticle = (id) => {
+    const updatedArticles = articles.filter((article) => article.id !== id);
+    setArticles(updatedArticles);
   };
 
   return (
@@ -96,9 +92,8 @@ function App() {
         <ul>
           {articles.map((article, id) => (
             <li
-              key={id}><h2>{article.titolo}</h2>
-              <p>{article.contenuto}</p>
-              <p><em>{article.categoria}</em></p>
+              key={article.id}><h2>{article.titolo}</h2>
+              <button onClick={() => removeArticle(article.id)}>Cancella</button>
             </li>
           ))}
         </ul>
@@ -106,38 +101,12 @@ function App() {
       <div className="container">
         <form onSubmit={handleSubmit} action="/action_page.php" method="get">
           {/* <label>Aggiungi Articolo:</label>
-          <input type="text" id="fname" name="fname" value={newArticle} onChange={event => { setNewArticle(event.target.value) }} placeholder="Inserire il nuovo articolo qui"></input>
-          <input type="submit" value="Aggiungi"></input> */}
+          <input type="text" id="fname" name="fname" value={newArticle} onChange={event => { setNewArticle(event.target.value) }} placeholder="Inserire il nuovo articolo qui"></input>}
           {/* Modifica agli input per il passaggio ad array di oggetti */}
           <label>
             <p className="label-sm">Titolo:</p>
             <input
-              type="text"
-              name="titolo"
-              value={newArticle.titolo}
-              onChange={handleInputChange}
-              placeholder="Inserisci il titolo"
-            />
-          </label>
-          <label>
-            <p className="label-sm">Contenuto:</p>
-            <input
-              type="text"
-              name="contenuto"
-              value={newArticle.contenuto}
-              onChange={handleInputChange}
-              placeholder="Inserisci l'contenuto"
-            />
-          </label>
-          <label>
-            <p className="label-sm">Categoria:</p>
-            <input
-              type="text"
-              name="categoria"
-              value={newArticle.categoria}
-              onChange={handleInputChange}
-              placeholder="Inserisci la categoria"
-            />
+              type="text" name="titolo" value={newArticle.titolo} onChange={handleInputChange} placeholder="Inserisci il titolo" />
           </label>
           <span><input className="submit-bt" type="submit" value="Aggiungi Articolo" /></span>
         </form>
