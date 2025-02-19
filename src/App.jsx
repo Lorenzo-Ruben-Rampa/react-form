@@ -94,9 +94,9 @@ function App() {
     <>
       <div className="container">
         <ul>
-          {articles.map((article, index) => (
+          {articles.map((article, id) => (
             <li
-              key={index}><h2>{article.titolo}</h2>
+              key={id}><h2>{article.titolo}</h2>
               <p>{article.contenuto}</p>
               <p><em>{article.categoria}</em></p>
             </li>
