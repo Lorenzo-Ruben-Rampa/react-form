@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import trashIcon from '../src/components/trash-can-arrow-up-solid.svg'
 
 function App() {
 
@@ -93,7 +94,7 @@ function App() {
           {articles.map((article, id) => (
             <li
               key={article.id}><h2>{article.titolo}</h2>
-              <button onClick={() => removeArticle(article.id)}>Cancella</button>
+              <button onClick={() => removeArticle(article.id)}><img src={trashIcon}></img></button>
             </li>
           ))}
         </ul>
