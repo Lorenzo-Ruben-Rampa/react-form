@@ -96,6 +96,11 @@ ul>li {
   padding: 1em;
   background-color: lightblue;
   color: blue;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 400px;
+  text-align: center;
 }
 
 #fname {
@@ -142,5 +147,6 @@ form {
 
   button {
     background-color: #f9f9f9;
+    margin-top: 10px;
   }
 }
